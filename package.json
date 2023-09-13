@@ -25,7 +25,13 @@
     "husky": "husky install"
   },
   "dependencies": {
+    "@react-three/drei": "^9.83.9",
+    "@react-three/fiber": "^8.14.1",
     "lil-gui": "^0.18.2",
+    "r3f-perf": "^7.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.156.1",
     "tiny-emitter": "^2.1.0",
     "yup": "^1.2.0"
   },
@@ -37,13 +43,21 @@
     "sass": "^1.66.1",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.4",
+    "@vitejs/plugin-react": "^4.0.4",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": "18.17.0",
+    "node": "18.17.1",
     "npm": ">=9.0.0"
   },
   "engineStrict": true

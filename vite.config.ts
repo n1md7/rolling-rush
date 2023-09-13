@@ -1,6 +1,8 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react'
 import { envSchema } from './src/utils/validations/env.schema';
+
 
 export default defineConfig(({ mode }) => {
   envSchema.validateSync({ mode }, { strict: true });
@@ -30,11 +32,10 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           index: 'index.html',
-          about: 'about.html',
         },
       },
     },
-    plugins: [],
+    plugins: [react()],
     test: {
       setupFiles: ['./tests/unit/__setup__/setup.ts'],
       globals: true,

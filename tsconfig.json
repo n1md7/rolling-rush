@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "sourceMap": true,
+    "jsx": "react-jsx",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -19,7 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "/src/*": ["src/*"]
-    }
+    },
   },
   "include": ["src", "tests", "src/**/*.d.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
 }
