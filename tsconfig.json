@@ -22,6 +22,6 @@
       "/src/*": ["src/*"]
     },
   },
-  "include": ["src", "tests", "src/**/*.d.ts"],
+  "include": ["src", "tests", "src/**/*.d.ts", "./src/utils/validations/env.schema.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
