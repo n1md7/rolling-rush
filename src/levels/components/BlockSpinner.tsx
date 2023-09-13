@@ -1,4 +1,4 @@
-import { useFrame, Vector3 } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { floor2Material, obstacleMaterial } from '/src/levels/materials';
 import { boxGeometry } from '/src/levels/geometries';
 import { RigidBody, RapierRigidBody } from '@react-three/rapier';
