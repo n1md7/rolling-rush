@@ -6,14 +6,14 @@ import React, { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 type Props = { position?: [number, number, number] };
-export const BlockLimbo: React.FC<Props> = ({ position: [x = 1, y = 1, z = 1] = [1, 1, 1] }: Props) => {
+export const BlockAxe: React.FC<Props> = ({ position: [x = 1, y = 1, z = 1] = [1, 1, 1] }: Props) => {
   const offset = useMemo(() => Math.random() * Math.PI * 2, []);
   const obstacle = useRef<RapierRigidBody | null>(null);
 
   useFrame((state, _delta) => {
     const time = state.clock.getElapsedTime();
-    const translation = Math.sin(time + offset) + 1.15;
-    const vector = new THREE.Vector3(x, y + translation, z);
+    const translation = Math.sin(time + offset) * 1.25;
+    const vector = new THREE.Vector3(x + translation, y + 0.75, z);
     obstacle.current?.setNextKinematicTranslation(vector);
   });
 
@@ -31,7 +31,7 @@ export const BlockLimbo: React.FC<Props> = ({ position: [x = 1, y = 1, z = 1] = 
           castShadow
           receiveShadow
           position={[0, -0.1, 0]}
-          scale={[3.5, 0.3, 0.3]}
+          scale={[1.5, 1.5, 0.3]}
           geometry={boxGeometry}
           material={obstacleMaterial}
         />

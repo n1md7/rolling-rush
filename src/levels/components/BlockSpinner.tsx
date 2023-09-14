@@ -2,11 +2,12 @@ import { useFrame } from '@react-three/fiber';
 import { floor2Material, obstacleMaterial } from '/src/levels/materials';
 import { boxGeometry } from '/src/levels/geometries';
 import { RigidBody, RapierRigidBody } from '@react-three/rapier';
-import { useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 type Props = { position?: [number, number, number] };
-export default function BlockSpinner({ position = [1, 1, 1] }: Props) {
+
+export const BlockSpinner: React.FC<Props> = ({ position = [1, 1, 1] }: Props) => {
   const speed = useMemo(() => {
     const calculatedValue = Math.random() + 0.2;
     const sign = Math.random() < 0.5 ? -1 : 1;
@@ -42,4 +43,4 @@ export default function BlockSpinner({ position = [1, 1, 1] }: Props) {
       </RigidBody>
     </group>
   );
-}
+};
