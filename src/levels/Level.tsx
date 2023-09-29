@@ -1,15 +1,14 @@
 import BlockStart from '/src/levels/components/BlockStart';
 
 import BlockEnd from '/src/levels/components/BlockEnd';
-import { Vector3 } from '@react-three/fiber';
 import React, { useMemo } from 'react';
 
-type Type = React.FC<{ position?: Vector3 }>;
+type Type = React.FC<{ position?: [number, number, number] }>;
 type Props = { count?: number; types: Type[] };
 
 export default function Level({ count = 1, types }: Props) {
   const blocks = useMemo(() => {
-    const blocks = [];
+    const blocks: Type[] = [];
     for (let i = 0; i < count; i++) {
       blocks.push(types[Math.floor(Math.random() * types.length)]);
     }
