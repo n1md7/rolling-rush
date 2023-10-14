@@ -1,6 +1,6 @@
 import { Vector3 } from '@react-three/fiber';
-import { floor1Material } from '/src/levels/materials';
-import { boxGeometry } from '/src/levels/geometries';
+import { floor1Material } from '/src/levels/shared/materials';
+import { boxGeometry } from '/src/levels/shared/geometries';
 
 type Props = { position?: Vector3 };
 export default function BlockStart({ position = [1, 1, 1] }: Props) {

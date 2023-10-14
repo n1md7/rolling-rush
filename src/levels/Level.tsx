@@ -1,6 +1,7 @@
 import BlockStart from '/src/levels/components/BlockStart';
 
 import BlockEnd from '/src/levels/components/BlockEnd';
+import Bounds from '/src/levels/components/Bounds';
 import React, { useMemo } from 'react';
 
 type Type = React.FC<{ position?: [number, number, number] }>;
@@ -25,6 +26,7 @@ export default function Level({ count = 1, types }: Props) {
         return <Block key={index} position={[x, y, z]} />;
       })}
       <BlockEnd position={[0, 0, -(count + 1) * 4]} />
+      <Bounds length={count + 2} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useFrame } from '@react-three/fiber';
-import { floor2Material, obstacleMaterial } from '/src/levels/materials';
-import { boxGeometry } from '/src/levels/geometries';
+import { floor2Material, obstacleMaterial } from '/src/levels/shared/materials';
+import { boxGeometry } from '/src/levels/shared/geometries';
 import { RigidBody, RapierRigidBody } from '@react-three/rapier';
 import React, { useMemo, useRef } from 'react';
 import * as THREE from 'three';
