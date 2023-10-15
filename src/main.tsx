@@ -1,10 +1,11 @@
 import env from './utils/Env';
 import ReactDOM from 'react-dom/client';
 import { Canvas } from '@react-three/fiber';
-import Experience from '/src/setup/Experience';
-import React from 'react';
 import { KeyboardControls } from '@react-three/drei';
 import { keyMap } from '/src/constants/keyMap';
+import Experience from '/src/setup/Experience';
+import Interface from '/src/setup/Interface';
+import React from 'react';
 
 console.info('Is development mode:', env.isDevelopment());
 
@@ -24,6 +25,7 @@ root.render(
       >
         <Experience />
       </Canvas>
+      <Interface />
     </KeyboardControls>
   </React.StrictMode>,
 );

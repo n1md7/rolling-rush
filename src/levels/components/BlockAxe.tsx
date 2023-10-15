@@ -1,5 +1,5 @@
 import { useFrame } from '@react-three/fiber';
-import { floor2Material, obstacleMaterial } from '/src/levels/shared/materials';
+import { middleFloorMaterial, obstacleMaterial } from '/src/levels/shared/materials';
 import { boxGeometry } from '/src/levels/shared/geometries';
 import { RigidBody, RapierRigidBody } from '@react-three/rapier';
 import React, { useMemo, useRef } from 'react';
@@ -24,7 +24,7 @@ export const BlockAxe: React.FC<Props> = ({ position: [x = 1, y = 1, z = 1] = [1
         position={[0, -0.1, 0]}
         scale={[4, 0.2, 4]}
         geometry={boxGeometry}
-        material={floor2Material}
+        material={middleFloorMaterial}
       />
       <RigidBody ref={obstacle} type="kinematicPosition" position={[0, 0.3, 0]} restitution={0.2} friction={0}>
         <mesh

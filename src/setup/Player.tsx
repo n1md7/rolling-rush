@@ -4,11 +4,16 @@ import { useKeyboardControls } from '@react-three/drei';
 import { KeyNames } from '/src/constants/keyMap';
 import { useEffect, useRef } from 'react';
 import { Vector3 } from 'three';
+import { Phase, useStore } from '/src/stores/useStore';
 
 export default function Player() {
-  const body = useRef<RapierRigidBody>(null!);
   const { rapier, world } = useRapier();
   const [subscribeKeys, getKeys] = useKeyboardControls<KeyNames>();
+  const body = useRef<RapierRigidBody>(null!);
+  const start = useStore((state) => state.start);
+  const ended = useStore((state) => state.ended);
+  const restart = useStore((state) => state.restart);
+  const blocksCount = useStore((state) => state.blocksCount);
   const smoothCameraPosition = new Vector3(10, 10, 10);
   const smoothCameraTarget = new Vector3(0, 0, 0);
 
@@ -21,6 +26,12 @@ export default function Player() {
     if (!intersection || intersection.toi > 0.15) return;
 
     body.current.applyImpulse({ x: 0, y: 0.5, z: 0 }, true);
+  };
+
+  const triggerReset = () => {
+    body.current.setTranslation({ x: 0, y: 1, z: 0 }, true);
+    body.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
+    body.current.setAngvel({ x: 0, y: 0, z: 0 }, true);
   };
 
   useFrame((state, delta) => {
@@ -70,17 +81,33 @@ export default function Player() {
 
     state.camera.position.copy(smoothCameraPosition);
     state.camera.lookAt(smoothCameraTarget);
+
+    if (bodyPosition.z < -(blocksCount * 4 + 2)) ended();
+    if (bodyPosition.y < -4) restart();
   });
 
   useEffect(() => {
-    const unsubscribe = subscribeKeys(
-      (state) => state.Jump,
-      (jump) => {
-        if (jump) triggerJump();
-      },
-    );
+    const fns = [
+      useStore.subscribe(
+        (state) => state.phase,
+        (phase) => {
+          if (phase === Phase.Ready) triggerReset();
+        },
+      ),
+      subscribeKeys(
+        (state) => state.Jump,
+        (jump) => {
+          if (jump) triggerJump();
+        },
+      ),
+      // Any key press listener
+      subscribeKeys(
+        (state) => state,
+        () => start(),
+      ),
+    ];
 
-    return () => unsubscribe();
+    return () => fns.forEach((fn) => fn());
   }, []);
 
   return (

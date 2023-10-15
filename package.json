@@ -28,15 +28,18 @@
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@react-three/rapier": "^1.1.1",
+    "classnames": "^2.3.2",
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.156.1",
     "tiny-emitter": "^2.1.0",
     "tweakpane": "^4.0.1",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "zustand": "4.3"
   },
   "devDependencies": {
+    "@redux-devtools/extension": "^3.2.5",
     "@tweakpane/core": "^2.0.1",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
