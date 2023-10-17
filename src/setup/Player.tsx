@@ -1,10 +1,10 @@
 import { RapierRigidBody, RigidBody, useRapier } from '@react-three/rapier';
 import { useFrame } from '@react-three/fiber';
-import { useKeyboardControls } from '@react-three/drei';
-import { KeyNames } from '/src/constants/keyMap';
 import { useEffect, useRef } from 'react';
 import { Vector3 } from 'three';
 import { Phase, useStore } from '/src/stores/useStore';
+import { useKeyboardControls } from '@react-three/drei';
+import { KeyNames } from '/src/constants/keyMap';
 
 export default function Player() {
   const { rapier, world } = useRapier();

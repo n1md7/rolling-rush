@@ -9,6 +9,10 @@ body,
   background: ivory;
 }
 
+.pointer-events {
+  pointer-events: auto!important;
+}
+
 div.interface {
   position: fixed;
   top: 0;
